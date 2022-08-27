@@ -1,13 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .models import Text
 
 from konlpy.tag import Okt
 from collections import Counter
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-import matplotlib
-import matplotlib_inline
 import stylecloud
 
 
