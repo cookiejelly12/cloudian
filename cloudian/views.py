@@ -37,7 +37,7 @@ def wc_create(request):
             stylecloud.gen_stylecloud(text=words,
                                       icon_name=wc_shape,
                                       background_color="white",
-                                      font_path="C:/python_practice/wordcloud/static/BMHANNAPro.ttf",
+                                      font_path="/home/cloba/cloudian/cloudian/BMHANNAPro.ttf",
                                       output_name="cloudian.png",)
 
     return redirect('cloudian:main')
