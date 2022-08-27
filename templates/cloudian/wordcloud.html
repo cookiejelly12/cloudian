@@ -1,85 +1,9 @@
+{% extends 'cloudian/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
-    <!-- cloudian CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <title>Cloudian</title>
-</head>
-<body>
-    <div class="page-header">
-        <h1>Cloudian</h1>
-    </div>
-
-    <div class="content container">
-        사용 방법:<br />
-        1. 워드클라우드로 만들고 싶은 내용을 아래에 입력한다.<br />
-        2. '모양 선택'에서 원하는 워드클라우드 모양을 고른다.<br />
-        3. '워드클라우드 생성' 버튼을 누르고 기다린다.<br />
-        4. 완성된 워드클라우드 이미지를 다운로드 받는다.<br />
-        <br />
-        주의 사항:<br />
-        1. 한글만 입력해주세요. 그 밖의 언어는 워드클라우드로 만들 수 없습니다.<br />
-        2. 문장이 너무 짧거나 단어의 수가 적으면 모양이 제대로 안 나올 수 있습니다.<br />
-        <br />
-    </div>
-
-    <div class="content container">
-        <form action="{% url 'cloudian:wc_create' %}" method="post">
-            {% csrf_token %}
-            <label for="shapes">모양 선택:</label>
-            <select id="shapes" name="shapes">
-                <option value="fas fa-dog">강아지</option>
-                <option value="fas fa-cloud">구름</option>
-                <option value="fas fa-flag">깃발</option>
-                <option value="fas fa-filter">깔때기</option>
-                <option value="fas fa-exclamation">느낌표</option>
-                <option value="fas fa-anchor">닻</option>
-                <option value="fas fa-square">둥근 정사각형</option>
-                <option value="fas fa-fish">물고기</option>
-                <option value="fas fa-comment">말풍선</option>
-                <option value="fas fa-star">별</option>
-                <option value="fas fa-bread-slice">빵</option>
-                <option value="fas fa-apple-alt">사과</option>
-                <option value="fas fa-user">사람</option>
-                <option value="fas fa-crown">왕관</option>
-                <option value="fas fa-circle">원</option>
-                <option value="fas fa-square-full">정사각형</option>
-                <option value="fas fa-bell">종</option>
-                <option value="fas fa-heart">하트</option>
-                <option value="fas fa-skull">해골</option>
-            </select>
-            <textarea name="content" id="content" rows="15"></textarea>
-            <input type="submit" value="워드클라우드 생성">
-        </form>
-    </div>
-
+{% block content %}
     <div class="content container">
         <br />
         <br />
-        워드클라우드에 배달의민족 한나체 Pro를 사용하였습니다.<br />
-        <br />
-        Copyright © 2013, Woowa Brothers Corporation (https://www.woowahan.com), with Reserved Font Name<br />
-        BM HANNA 11yrs old, BM HANNA 11yrs old OTF, BMHANNAAir_otf, BMHANNAAir_ttf, BMHANNAPro_otf,<br />
-        BMHANNAPro_ttf, BM JUA_TTF, BM JUA_OTF, BM DoHyeon, BM DoHyeon OTF, BM YEONSUNG, BM<br />
-        YEONSUNG OTF, BM KIRANGHAERANG, BM KIRANGHAERANG OTF, BMEULJIRO, BMEULJIROTTF, BM EULJITO<br />
-        10 YEARS LATER, BM EULJITO 10 YEARS LATER TTF.<br />
-        <br />
-        This Font Software is licensed under the SIL Open Font License, Version 1.1.<br />
-        <br />
-        This license is copied below, and is also available with a FAQ at: <a href="http://scripts.sil.org/OFL">http://scripts.sil.org/OFL</a><br />
-        <br />
-        <br />
-        사이트 개발에 도움 주신 분들:<br />
-        <a href="https://tutorial.djangogirls.org/ko/">Django Girls</a><br />
-        <a href="https://wikidocs.net/book/4223">점프 투 장고</a><br />
-        <br />
+        <img src="../static/cloudImage/cloudian_{{ img_id }}.png", alt="워드클라우드 이미지"/>
     </div>
-</body>
-</html>
+{% endblock %}

@@ -3,15 +3,24 @@ from django.shortcuts import render, redirect
 from konlpy.tag import Okt
 from collections import Counter
 import stylecloud
+import random
 
 
-def text(request):
-    return render(request, 'cloudian/wordcloud.html')
+def main(request):
+    return render(request, 'cloudian/base.html')
+
+
+def output(request, img_id):
+    context = {'img_id': img_id}
+    return render(request, 'cloudian/wordcloud.html', context)
 
 
 def wc_create(request):
     wc_text = request.POST.get('content')
     wc_shape = request.POST.get('shapes')
+    rannum = random.randint(1, 10000000)
+    name = "cloudian_"+str(rannum)+".png"
+
     if " " in wc_text:
         lists = [wc_text]
 
@@ -37,7 +46,7 @@ def wc_create(request):
             stylecloud.gen_stylecloud(text=words,
                                       icon_name=wc_shape,
                                       background_color="white",
-                                      font_path="/home/cloba/cloudian/cloudian/BMHANNAPro.ttf",
-                                      output_name="cloudian.png",)
+                                      font_path="/home/cloba/cloudian/static/BMHANNAPro.ttf",
+                                      output_name="/home/cloba/cloudian/static/cloudImage/"+name,)
 
-    return redirect('cloudian:main')
+    return redirect('cloudian:wc_output', img_id=rannum)
