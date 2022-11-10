@@ -26,7 +26,7 @@
         4. 완성된 단어구름 이미지를 다운로드 받는다.<br />
         <br />
         주의 사항:<br />
-        1. 한글만 입력해주세요. 그 밖의 언어는 단어구름으로 만들 수 없습니다.<br />
+        1. 괄호 안에 들어 있는 단어는 제대로 인식하지 못할 수 있습니다.<br />
         2. 문장이 너무 짧거나 단어의 수가 적으면 모양이 제대로 안 나올 수 있습니다.<br />
     </div>
 
@@ -62,11 +62,12 @@
                 <option value="fas fa-heart">하트</option>
                 <option value="fas fa-skull">해골</option>
             </select>
-            <textarea name="content" id="content" rows="15"></textarea>
+            <textarea style="resize:none" name="content" id="content" rows="10"></textarea>
             <input type="submit" value="단어구름 생성">
         </form>
-        <br />
+        예시: <img src="../static/cloudImage/cloudian_example.png", alt="워드클라우드 이미지 예시", width="20%", height="20%"/>
     </div>
+    <br />
 
     <div class="content container">
         <br />
@@ -74,47 +75,51 @@
         <br />
         This site was created by Donghyeon Gu. (gdonghyeon@postech.ac.kr) <br />
         <br />
-        <br />
-        Copyright (c) 2012 Andreas Christian Mueller<br />
-        <br />
-        Permission is hereby granted, free of charge, to any person obtaining a copy of<br />
-        this software and associated documentation files (the "Software"), to deal in<br />
-        the Software without restriction, including without limitation the rights to<br />
-        use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of<br />
-        the Software, and to permit persons to whom the Software is furnished to do so,<br />
-        subject to the following conditions:<br />
-        <br />
-        The above copyright notice and this permission notice shall be included in all<br />
-        copies or substantial portions of the Software.<br />
-        <br />
-        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br />
-        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS<br />
-        FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR<br />
-        COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER<br />
-        IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN<br />
-        CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br />
-        <br />
-        <br />
-        MIT License<br />
-        <br />
-        Copyright (c) 2019-2020 Max Woolf<br />
-        <br />
-        Permission is hereby granted, free of charge, to any person obtaining a copy<br />
-        of this software and associated documentation files (the "Software"), to deal<br />
-        in the Software without restriction, including without limitation the rights<br />
-        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br />
-        copies of the Software, and to permit persons to whom the Software is<br />
-        furnished to do so, subject to the following conditions:<br />
-        <br />
-        The above copyright notice and this permission notice shall be included in all<br />
-        copies or substantial portions of the Software.<br />
-        <br />
-        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br />
-        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS<br />
-        FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR<br />
-        COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER<br />
-        IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN<br />
-        CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br />
+        <div>
+            <a href=#none id="show" onclick="if(hide.style.display=='none') {hide.style.display='';show.innerText='▲Fold'} else {hide.style.display='none';show.innerText='▶License'}">▶License</a>
+            <div id="hide" style="display: none">
+                Copyright (c) 2012 Andreas Christian Mueller<br />
+                <br />
+                Permission is hereby granted, free of charge, to any person obtaining a copy of<br />
+                this software and associated documentation files (the "Software"), to deal in<br />
+                the Software without restriction, including without limitation the rights to<br />
+                use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of<br />
+                the Software, and to permit persons to whom the Software is furnished to do so,<br />
+                subject to the following conditions:<br />
+                <br />
+                The above copyright notice and this permission notice shall be included in all<br />
+                copies or substantial portions of the Software.<br />
+                <br />
+                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br />
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS<br />
+                FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR<br />
+                COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER<br />
+                IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN<br />
+                CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br />
+                <br />
+                <br />
+                MIT License<br />
+                <br />
+                Copyright (c) 2019-2020 Max Woolf<br />
+                <br />
+                Permission is hereby granted, free of charge, to any person obtaining a copy<br />
+                of this software and associated documentation files (the "Software"), to deal<br />
+                in the Software without restriction, including without limitation the rights<br />
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br />
+                copies of the Software, and to permit persons to whom the Software is<br />
+                furnished to do so, subject to the following conditions:<br />
+                <br />
+                The above copyright notice and this permission notice shall be included in all<br />
+                copies or substantial portions of the Software.<br />
+                <br />
+                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br />
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS<br />
+                FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR<br />
+                COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER<br />
+                IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN<br />
+                CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br />
+            </div>
+        </div>
     </div>
 </body>
 </html>

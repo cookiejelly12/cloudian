@@ -37,6 +37,16 @@ def wc_create(request):
                 if tag in ['Noun'] and ("것" not in word) and ("내" not in word) and ("나" not in word) and (
                         "수" not in word) and ("게" not in word) and ("말" not in word) and ("로서" not in word):
                     noun_adj_adv_list.append(word)
+                if tag in ['Adjective']:
+                    noun_adj_adv_list.append(word)
+                if tag in ['Adverb']:
+                    noun_adj_adv_list.append(word)
+                if tag in ['Foreign'] and ("(" not in word) and (")" not in word) and ("!" not in word) and (
+                        "?" not in word) and ("." not in word) and ("," not in word):
+                    noun_adj_adv_list.append(word)
+                if tag in ['Alpha'] and ("(" not in word) and (")" not in word) and ("!" not in word) and (
+                        "?" not in word) and ("." not in word) and ("," not in word):
+                    noun_adj_adv_list.append(word)
 
         if len(noun_adj_adv_list) != 0:
             count = Counter(noun_adj_adv_list)

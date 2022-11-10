@@ -45,3 +45,16 @@ body {
     font-size: 26pt;
     margin-right: 20px;
 }
+
+.grid {
+        width: 500px;
+        margin: 0 auto;
+        background-color: dimgrey;
+        overflow: hidden; /*부모 높이를 잊어 버리기 때문에 다시 높이를 생기게끔 해주는 float 해제 기법*/
+}
+
+.grid_item {
+        width: 100px;
+        height: 100px;
+        float: left; /*가로 정렬을 하기 위한 float*/
+}
