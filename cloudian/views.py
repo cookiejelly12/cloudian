@@ -98,10 +98,14 @@ def wc_create_en(request):
     stop_words = set(stopwords.words("english"))
     filtered_list = []
 
-    words = word_tokenize(wc_text)
-    for word in words:
-        if word.casefold() not in stop_words:
-            filtered_list.append(word)
+    if " " in wc_text:
+        lists = [wc_text]
+
+        for sentence in lists:
+            words = word_tokenize(sentence)
+            for word in words:
+                if word.casefold() not in stop_words:
+                    filtered_list.append(word)
 
     if len(filtered_list) != 0:
         count = Counter(filtered_list)
