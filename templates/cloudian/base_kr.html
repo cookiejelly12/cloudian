@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
     <!-- Required meta tags -->
@@ -14,20 +14,20 @@
 </head>
 <body>
     <div class="page-header">
-        <h1>Wordcloud Generator</h1>
+        <h1>단어구름 생성기</h1>
     </div>
 
     <div class="content container">
         <br />
-        How to use:<br />
-        1. Type the text you want to make into a wordcloud in the box below.<br />
-        2. Choose the word cloud shape you want from 'Shapes'.<br />
-        3. Press the 'Generate' button and wait.<br />
-        4. Download the completed word cloud image.<br />
+        사용 방법:<br />
+        1. 단어구름으로 만들고 싶은 내용을 아래에 입력한다.<br />
+        2. '모양 선택'에서 원하는 단어구름 모양을 고른다.<br />
+        3. '단어구름 생성' 버튼을 누르고 기다린다.<br />
+        4. 완성된 단어구름 이미지를 다운로드 받는다.<br />
         <br />
-        Note:<br />
-        1. Words in parentheses may not be recognized properly.<br />
-        2. If the sentence is too short or the number of words is small, the word cloud may not be generated properly.<br />
+        주의 사항:<br />
+        1. 괄호 안에 들어 있는 단어는 제대로 인식하지 못할 수 있습니다.<br />
+        2. 문장이 너무 짧거나 단어의 수가 적으면 모양이 제대로 안 나올 수 있습니다.<br />
     </div>
 
     <!-- 기본 템플릿 안에 삽입될 내용 Start -->
@@ -40,38 +40,38 @@
         <br/>
         <form action="{% url 'cloudian:wc_create' %}" method="post">
             {% csrf_token %}
-            <label for="shapes">Shapes</label>
+            <label for="shapes">모양 선택:</label>
             <select id="shapes" name="shapes">
-                <option value="fas fa-anchor">Anchor</option>
-                <option value="fas fa-apple-alt">Apple</option>
-                <option value="fas fa-bell">Bell</option>
-                <option value="fas fa-bread-slice">Bread</option>
-                <option value="fas fa-circle">Circle</option>
-                <option value="fas fa-cloud">Cloud</option>
-                <option value="fas fa-comment">Comment</option>
-                <option value="fas fa-crown">Crown</option>
-                <option value="fas fa-dog">Dog</option>
-                <option value="fas fa-exclamation">Exclamation</option>
-                <option value="fas fa-flag">Flag</option>
-                <option value="fas fa-filter">Filter</option>
-                <option value="fas fa-fish">Fish</option>
-                <option value="fas fa-heart">Heart</option>
-                <option value="fas fa-square">Round Square</option>
-                <option value="fas fa-skull">Skull</option>
-                <option value="fas fa-square-full">Square</option>
-                <option value="fas fa-star">Star</option>
-                <option value="fas fa-user">User</option>
+                <option value="fas fa-dog">강아지</option>
+                <option value="fas fa-cloud">구름</option>
+                <option value="fas fa-flag">깃발</option>
+                <option value="fas fa-filter">깔때기</option>
+                <option value="fas fa-exclamation">느낌표</option>
+                <option value="fas fa-anchor">닻</option>
+                <option value="fas fa-square">둥근 정사각형</option>
+                <option value="fas fa-fish">물고기</option>
+                <option value="fas fa-comment">말풍선</option>
+                <option value="fas fa-star">별</option>
+                <option value="fas fa-bread-slice">빵</option>
+                <option value="fas fa-apple-alt">사과</option>
+                <option value="fas fa-user">사람</option>
+                <option value="fas fa-crown">왕관</option>
+                <option value="fas fa-circle">원</option>
+                <option value="fas fa-square-full">정사각형</option>
+                <option value="fas fa-bell">종</option>
+                <option value="fas fa-heart">하트</option>
+                <option value="fas fa-skull">해골</option>
             </select>
             <textarea style="resize:none" name="content" id="content" rows="10"></textarea>
-            <input type="submit" value="Generate">
+            <input type="submit" value="단어구름 생성">
         </form>
-        Example: <img src="../static/cloudImage/cloudian_example.png", alt="Example image", width="20%", height="20%"/>
+        예시: <img src="../static/cloudImage/cloudian_example.png", alt="워드클라우드 이미지 예시", width="20%", height="20%"/>
     </div>
     <br />
 
     <div class="content container">
         <br />
-        Pohangjecheol High School AI & Math Club "Math AI" (Youtube Channel: <a href="https://www.youtube.com/c/MathMVP">Math MVP</a>)<br />
+        포항제철고 인공지능 수학 동아리 Math AI (유튜브 채널: <a href="https://www.youtube.com/c/MathMVP">Math MVP</a>)<br />
         <br />
         This site was created by Donghyeon Gu. (gdonghyeon@postech.ac.kr) <br />
         <br />

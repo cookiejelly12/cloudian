@@ -2,24 +2,32 @@ from django.shortcuts import render, redirect
 
 from konlpy.tag import Okt
 from collections import Counter
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 import stylecloud
 import random
 
 
+def main_kr(request):
+    return render(request, 'cloudian/base_kr.html')
+
 def main(request):
     return render(request, 'cloudian/base.html')
 
+def output_kr(request, img_id):
+    context = {'img_id': img_id}
+    return render(request, 'cloudian/wordcloud_kr.html', context)
 
 def output(request, img_id):
     context = {'img_id': img_id}
     return render(request, 'cloudian/wordcloud.html', context)
 
-
-def wc_create(request):
+def wc_create_kr(request):
     wc_text = request.POST.get('content')
     wc_shape = request.POST.get('shapes')
     rannum = random.randint(1, 10000000)
-    name = "cloudian_"+str(rannum)+".png"
+    name = "cloudian_"+str(rannum)+"_kr.png"
 
     if " " in wc_text:
         lists = [wc_text]
@@ -42,10 +50,12 @@ def wc_create(request):
                 if tag in ['Adverb']:
                     noun_adj_adv_list.append(word)
                 if tag in ['Foreign'] and ("(" not in word) and (")" not in word) and ("!" not in word) and (
-                        "?" not in word) and ("." not in word) and ("," not in word):
+                        "?" not in word) and ("." not in word) and ("," not in word) and (
+                        "\'" not in word) and ("\"" not in word):
                     noun_adj_adv_list.append(word)
                 if tag in ['Alpha'] and ("(" not in word) and (")" not in word) and ("!" not in word) and (
-                        "?" not in word) and ("." not in word) and ("," not in word):
+                        "?" not in word) and ("." not in word) and ("," not in word) and (
+                        "\'" not in word) and ("\"" not in word):
                     noun_adj_adv_list.append(word)
 
         if len(noun_adj_adv_list) != 0:
@@ -58,5 +68,33 @@ def wc_create(request):
                                       background_color="white",
                                       font_path="/home/cloba/cloudian/static/BMHANNAPro.ttf",
                                       output_name="/home/cloba/cloudian/static/cloudImage/"+name,)
+
+    return redirect('cloudian:wc_output_kr', img_id=rannum)
+
+def wc_create(request):
+    wc_text = request.POST.get('content')
+    wc_shape = request.POST.get('shapes')
+    rannum = random.randint(1, 10000000)
+    name = "cloudian_"+str(rannum)+".png"
+
+    nltk.download("stopwords")
+    stop_words = set(stopwords.words("english"))
+    filtered_list = []
+
+    words = word_tokenize(wc_text)
+    for word in words:
+        if word.casefold() not in stop_words:
+            filtered_list.append(word)
+
+    if len(filtered_list) != 0:
+        count = Counter(filtered_list)
+
+        texts = dict(count.most_common())
+
+        stylecloud.gen_stylecloud(text=texts,
+                                  icon_name=wc_shape,
+                                  background_color="white",
+                                  font_path="/home/cloba/cloudian/static/BMHANNAPro.ttf",
+                                  output_name="/home/cloba/cloudian/static/cloudImage/"+name,)
 
     return redirect('cloudian:wc_output', img_id=rannum)
