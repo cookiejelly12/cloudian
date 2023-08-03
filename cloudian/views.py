@@ -94,7 +94,7 @@ def wc_create_en(request):
     rannum = random.randint(1, 10000000)
     name = "cloudian_" + str(rannum) + ".png"
 
-    if " " in wc_text:
+    if wc_text is not None:
         nltk.download("stopwords")
         stop_words = set(stopwords.words("english"))
         filtered_list = []
