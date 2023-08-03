@@ -9,25 +9,41 @@ import stylecloud
 import random
 
 
+def main(request):
+    return redirect('cloudian:main_en')
+
+
+def output(request, img_id):
+    return redirect('cloudian:wc_output_en', img_id=img_id)
+
+
+def wc_create(request):
+    return redirect('cloudian:wc_create_en')
+
+
 def main_kr(request):
     return render(request, 'cloudian/base_kr.html')
 
-def main(request):
+
+def main_en(request):
     return render(request, 'cloudian/base.html')
+
 
 def output_kr(request, img_id):
     context = {'img_id': img_id}
     return render(request, 'cloudian/wordcloud_kr.html', context)
 
-def output(request, img_id):
+
+def output_en(request, img_id):
     context = {'img_id': img_id}
     return render(request, 'cloudian/wordcloud.html', context)
+
 
 def wc_create_kr(request):
     wc_text = request.POST.get('content')
     wc_shape = request.POST.get('shapes')
     rannum = random.randint(1, 10000000)
-    name = "cloudian_"+str(rannum)+"_kr.png"
+    name = "cloudian_" + str(rannum) + "_kr.png"
 
     if " " in wc_text:
         lists = [wc_text]
@@ -67,15 +83,16 @@ def wc_create_kr(request):
                                       icon_name=wc_shape,
                                       background_color="white",
                                       font_path="/home/cloba/cloudian/static/BMHANNAPro.ttf",
-                                      output_name="/home/cloba/cloudian/static/cloudImage/"+name,)
+                                      output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
 
     return redirect('cloudian:wc_output_kr', img_id=rannum)
 
-def wc_create(request):
+
+def wc_create_en(request):
     wc_text = request.POST.get('content')
     wc_shape = request.POST.get('shapes')
     rannum = random.randint(1, 10000000)
-    name = "cloudian_"+str(rannum)+".png"
+    name = "cloudian_" + str(rannum) + ".png"
 
     nltk.download("stopwords")
     stop_words = set(stopwords.words("english"))
@@ -95,6 +112,6 @@ def wc_create(request):
                                   icon_name=wc_shape,
                                   background_color="white",
                                   font_path="/home/cloba/cloudian/static/BMHANNAPro.ttf",
-                                  output_name="/home/cloba/cloudian/static/cloudImage/"+name,)
+                                  output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
 
     return redirect('cloudian:wc_output', img_id=rannum)
