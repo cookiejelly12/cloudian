@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from konlpy.tag import Okt
 from collections import Counter
 import nltk
-from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import stylecloud
 import random
@@ -101,16 +100,16 @@ def wc_create_en(request):
 
         lists = [wc_text]
         words_list = []
-
         okt = Okt()
+
         for sentence in lists:
             words_list.append(okt.pos(sentence))
 
-        for sentence in words_list:
-            words = word_tokenize(sentence)
-            for word in words:
-                if word.casefold() not in stop_words:
-                    filtered_list.append(word)
+        for word, tag in words_list:
+            if word.casefold() not in stop_words and ("(" not in word) and (")" not in word) and ("!" not in word) and (
+                        "?" not in word) and ("." not in word) and ("," not in word) and (
+                        "\'" not in word) and ("\"" not in word) and ("\\" not in word):
+                filtered_list.append(word)
 
         if len(filtered_list) != 0:
             count = Counter(filtered_list)
