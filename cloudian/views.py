@@ -66,7 +66,7 @@ def wc_create_kr(request):
                     noun_adj_adv_list.append(word)
                 if tag in ['Foreign'] and ("(" not in word) and (")" not in word) and ("!" not in word) and (
                         "?" not in word) and ("." not in word) and ("," not in word) and (
-                        "\'" not in word) and ("\"" not in word):
+                        "\'" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word):
                     noun_adj_adv_list.append(word)
                 if tag in ['Alpha'] and ("(" not in word) and (")" not in word) and ("!" not in word) and (
                         "?" not in word) and ("." not in word) and ("," not in word) and (
@@ -108,8 +108,8 @@ def wc_create_en(request):
         for sentence in words_list:
             for word, tag in sentence:
                 if word.casefold() not in stop_words and ("(" not in word) and (")" not in word) and ("!" not in word) and (
-                            "?" not in word) and ("." not in word) and ("," not in word) and (
-                            "\'" not in word) and ("\"" not in word) and ("\\" not in word):
+                            "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
+                            "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word):
                     filtered_list.append(word)
 
         if len(filtered_list) != 0:
