@@ -99,8 +99,13 @@ def wc_create_en(request):
     filtered_list = []
 
     lists = [wc_text]
+    words_list = []
 
+    okt = Okt()
     for sentence in lists:
+        words_list.append(okt.pos(sentence))
+
+    for sentence in words_list:
         words = word_tokenize(sentence)
         for word in words:
             if word.casefold() not in stop_words:
