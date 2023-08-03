@@ -94,32 +94,33 @@ def wc_create_en(request):
     rannum = random.randint(1, 10000000)
     name = "cloudian_" + str(rannum) + ".png"
 
-    nltk.download("stopwords")
-    stop_words = set(stopwords.words("english"))
-    filtered_list = []
+    if " " in wc_text:
+        nltk.download("stopwords")
+        stop_words = set(stopwords.words("english"))
+        filtered_list = []
 
-    lists = [wc_text]
-    words_list = []
+        lists = [wc_text]
+        words_list = []
 
-    okt = Okt()
-    for sentence in lists:
-        words_list.append(okt.pos(sentence))
+        okt = Okt()
+        for sentence in lists:
+            words_list.append(okt.pos(sentence))
 
-    for sentence in words_list:
-        words = word_tokenize(sentence)
-        for word in words:
-            if word.casefold() not in stop_words:
-                filtered_list.append(word)
+        for sentence in words_list:
+            words = word_tokenize(sentence)
+            for word in words:
+                if word.casefold() not in stop_words:
+                    filtered_list.append(word)
 
-    if len(filtered_list) != 0:
-        count = Counter(filtered_list)
+        if len(filtered_list) != 0:
+            count = Counter(filtered_list)
 
-        texts = dict(count.most_common())
+            texts = dict(count.most_common())
 
-        stylecloud.gen_stylecloud(text=texts,
-                                  icon_name=wc_shape,
-                                  background_color="white",
-                                  font_path="/home/cloba/cloudian/static/BMHANNAPro.ttf",
-                                  output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
+            stylecloud.gen_stylecloud(text=texts,
+                                      icon_name=wc_shape,
+                                      background_color="white",
+                                      font_path="/home/cloba/cloudian/static/BMHANNAPro.ttf",
+                                      output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
 
     return redirect('cloudian:wc_output', img_id=rannum)
