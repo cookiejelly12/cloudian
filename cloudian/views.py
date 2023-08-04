@@ -112,14 +112,14 @@ def wc_create_en(request):
         for sentence in lists:
             words_list.append(word_tokenize(sentence))
 
-        for word in words_list:
-            if (word.casefold() not in eng_stop_words) and ("(" not in word) and (")" not in word) and (
-                    "!" not in word) and (
-                    "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
-                    "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
-                    ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
-                    "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
-                filtered_list.append(word)
+        for sentence in words_list:
+            for word in sentence:
+                if (word.casefold() not in eng_stop_words) and ("(" not in word) and (")" not in word) and ("!" not in word) and (
+                        "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
+                        "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
+                        ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
+                        "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
+                    filtered_list.append(word)
 
         if len(filtered_list) != 0:
             count = Counter(filtered_list)
@@ -151,14 +151,14 @@ def wc_create_es(request):
         for sentence in lists:
             words_list.append(word_tokenize(sentence))
 
-        for word in words_list:
-            if (word.casefold() not in es_stop_words) and ("(" not in word) and (")" not in word) and (
-                    "!" not in word) and (
-                    "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
-                    "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
-                    ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
-                    "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
-                filtered_list.append(word)
+        for sentence in words_list:
+            for word in sentence:
+                if (word.casefold() not in es_stop_words) and ("(" not in word) and (")" not in word) and ("!" not in word) and (
+                        "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
+                        "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
+                        ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
+                        "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
+                    filtered_list.append(word)
 
         if len(filtered_list) != 0:
             count = Counter(filtered_list)
