@@ -141,7 +141,7 @@ def wc_create_es(request):
     wc_text = request.POST.get('content')
     wc_shape = request.POST.get('shapes')
     rannum = random.randint(1, 10000000)
-    name = "cloudian_" + str(rannum) + "_sp.png"
+    name = "cloudian_" + str(rannum) + "_es.png"
 
     if wc_text is not None:
         es_stop_words = stopwords.words("spanish")
