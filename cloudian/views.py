@@ -103,7 +103,7 @@ def wc_create_en(request):
     name = "cloudian_" + str(rannum) + ".png"
 
     if wc_text is not None:
-        eng_stop_words = stopwords.words("english")
+        eng_stop_words = list(stopwords.words("english"))
         filtered_list = []
 
         lists = [wc_text]
@@ -144,7 +144,7 @@ def wc_create_es(request):
     name = "cloudian_" + str(rannum) + "_es.png"
 
     if wc_text is not None:
-        es_stop_words = stopwords.words("spanish")
+        es_stop_words = list(stopwords.words("spanish"))
         filtered_list = []
 
         lists = [wc_text]
