@@ -28,6 +28,10 @@ def main_en(request):
     return render(request, 'cloudian/base.html')
 
 
+def main_sp(request):
+    return render(request, 'cloudian/base_sp.html')
+
+
 def output_kr(request, img_id):
     context = {'img_id': img_id}
     return render(request, 'cloudian/wordcloud_kr.html', context)
@@ -36,6 +40,11 @@ def output_kr(request, img_id):
 def output_en(request, img_id):
     context = {'img_id': img_id}
     return render(request, 'cloudian/wordcloud.html', context)
+
+
+def output_sp(request, img_id):
+    context = {'img_id': img_id}
+    return render(request, 'cloudian/wordcloud_sp.html', context)
 
 
 def wc_create_kr(request):
@@ -91,7 +100,7 @@ def wc_create_en(request):
     wc_text = request.POST.get('content')
     wc_shape = request.POST.get('shapes')
     rannum = random.randint(1, 10000000)
-    name = "cloudian_" + str(rannum) + ".png"
+    name = "cloudian_" + str(rannum) + "_sp.png"
 
     if wc_text is not None:
         nltk.download("stopwords")
@@ -107,11 +116,12 @@ def wc_create_en(request):
 
         for sentence in words_list:
             for word, tag in sentence:
-                if word.casefold() not in stop_words and ("(" not in word) and (")" not in word) and ("!" not in word) and (
-                            "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
-                            "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
-                            ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
-                            "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
+                if word.casefold() not in stop_words and ("(" not in word) and (")" not in word) and (
+                        "!" not in word) and (
+                        "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
+                        "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
+                        ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
+                        "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
                     filtered_list.append(word)
 
         if len(filtered_list) != 0:
@@ -122,7 +132,49 @@ def wc_create_en(request):
             stylecloud.gen_stylecloud(text=texts,
                                       icon_name=wc_shape,
                                       background_color="white",
-                                      font_path="/home/cloba/cloudian/static/BMHANNAPro.ttf",
+                                      font_path="/home/cloba/cloudian/static/IBMPlaxSans-Regular.ttf",
+                                      output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
+
+    return redirect('cloudian:wc_output', img_id=rannum)
+
+
+def wc_create_sp(request):
+    wc_text = request.POST.get('content')
+    wc_shape = request.POST.get('shapes')
+    rannum = random.randint(1, 10000000)
+    name = "cloudian_" + str(rannum) + "_sp.png"
+
+    if wc_text is not None:
+        nltk.download("stopwords")
+        stop_words = set(stopwords.words("spanish"))
+        filtered_list = []
+
+        lists = [wc_text]
+        words_list = []
+        okt = Okt()
+
+        for sentence in lists:
+            words_list.append(okt.pos(sentence))
+
+        for sentence in words_list:
+            for word, tag in sentence:
+                if word.casefold() not in stop_words and ("(" not in word) and (")" not in word) and (
+                        "!" not in word) and (
+                        "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
+                        "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
+                        ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
+                        "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
+                    filtered_list.append(word)
+
+        if len(filtered_list) != 0:
+            count = Counter(filtered_list)
+
+            texts = dict(count.most_common())
+
+            stylecloud.gen_stylecloud(text=texts,
+                                      icon_name=wc_shape,
+                                      background_color="white",
+                                      font_path="/home/cloba/cloudian/static/IBMPlaxSans-Regular.ttf",
                                       output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
 
     return redirect('cloudian:wc_output', img_id=rannum)

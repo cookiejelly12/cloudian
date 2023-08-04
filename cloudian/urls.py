@@ -14,4 +14,7 @@ urlpatterns = [
     path('kr/', views.main_kr, name='main_kr'),
     path('kr/wc_create/', views.wc_create_kr, name='wc_create_kr'),
     path('kr/<int:img_id>/', views.output_kr, name='wc_output_kr'),
+    path('sp/', views.main_sp, name='main_sp'),
+    path('sp/wc_create/', views.wc_create_sp, name='wc_create_sp'),
+    path('sp/<int:img_id>/', views.output_sp, name='wc_output_sp'),
 ]

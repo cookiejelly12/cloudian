@@ -14,13 +14,14 @@
 </head>
 <body>
     <div class="page-header">
-        <h1>Wordcloud Generator</h1>
+        <h1>Generador de nubes de palabras</h1>
     </div>
 
     <div class="content container">
         <br />
         Language: <a href="{% url 'cloudian:main_kr' %}">한국어</a>
-        <a href="{% url 'cloudian:main_en' %}">English</a><br />
+        <a href="{% url 'cloudian:main_en' %}">English</a>
+        <a href="{% url 'cloudian:main_sp' %}">Español</a><br />
         <br />
         <br />
         How to use:<br />
@@ -29,7 +30,7 @@
         3. Press the 'Generate' button and wait.<br />
         4. Download the completed word cloud image.<br />
         <br />
-        Note:<br />
+        Notes:<br />
         1. Words in parentheses may not be recognized properly.<br />
         2. If the sentence is too short or the number of words is small, the word cloud may not be generated properly.<br />
         3. Some punctuation marks or numbers can be printed together.<br />
@@ -53,7 +54,6 @@
                 <option value="fas fa-bread-slice">Bread</option>
                 <option value="fas fa-circle">Circle</option>
                 <option value="fas fa-cloud">Cloud</option>
-                <option value="fas fa-comment">Comment</option>
                 <option value="fas fa-crown">Crown</option>
                 <option value="fas fa-dog">Dog</option>
                 <option value="fas fa-exclamation">Exclamation</option>
@@ -61,11 +61,12 @@
                 <option value="fas fa-filter">Filter</option>
                 <option value="fas fa-fish">Fish</option>
                 <option value="fas fa-heart">Heart</option>
+                <option value="fas fa-user">Human</option>
                 <option value="fas fa-square">Round Square</option>
                 <option value="fas fa-skull">Skull</option>
+                <option value="fas fa-comment">Speech bubble</option>
                 <option value="fas fa-square-full">Square</option>
                 <option value="fas fa-star">Star</option>
-                <option value="fas fa-user">User</option>
             </select>
             <textarea style="resize:none" name="content" id="content" rows="10"></textarea>
             <input type="submit" value="Generate">
