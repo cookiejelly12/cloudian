@@ -175,4 +175,4 @@ def wc_create_es(request):
                                       font_path="/home/cloba/cloudian/static/IBMPlexSans-Regular.ttf",
                                       output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
 
-    return redirect('cloudian:wc_output', img_id=rannum)
+    return redirect('cloudian:wc_output_es', img_id=rannum)
