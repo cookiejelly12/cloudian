@@ -66,18 +66,18 @@ def wc_create_kr(request):
 
         for sentence in morphs:
             for word, tag in sentence:
-                if tag in ['Noun'] and ("것" not in word) and ("내" not in word) and ("나" not in word) and (
+                if (tag in ['Noun']) and ("것" not in word) and ("내" not in word) and ("나" not in word) and (
                         "수" not in word) and ("게" not in word) and ("말" not in word) and ("로서" not in word):
                     noun_adj_adv_list.append(word)
                 if tag in ['Adjective']:
                     noun_adj_adv_list.append(word)
                 if tag in ['Adverb']:
                     noun_adj_adv_list.append(word)
-                if tag in ['Foreign'] and ("(" not in word) and (")" not in word) and ("!" not in word) and (
+                if (tag in ['Foreign']) and ("(" not in word) and (")" not in word) and ("!" not in word) and (
                         "?" not in word) and ("." not in word) and ("," not in word) and (
                         "\'" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word):
                     noun_adj_adv_list.append(word)
-                if tag in ['Alpha'] and ("(" not in word) and (")" not in word) and ("!" not in word) and (
+                if (tag in ['Alpha']) and ("(" not in word) and (")" not in word) and ("!" not in word) and (
                         "?" not in word) and ("." not in word) and ("," not in word) and (
                         "\'" not in word) and ("\"" not in word):
                     noun_adj_adv_list.append(word)
@@ -115,7 +115,7 @@ def wc_create_en(request):
 
         for sentence in words_list:
             for word, tag in sentence:
-                if word.casefold() not in eng_stop_words and ("(" not in word) and (")" not in word) and (
+                if (word.casefold() not in eng_stop_words) and ("(" not in word) and (")" not in word) and (
                         "!" not in word) and (
                         "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
                         "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
@@ -144,7 +144,7 @@ def wc_create_es(request):
     name = "cloudian_" + str(rannum) + "_sp.png"
 
     if wc_text is not None:
-        spa_stop_words = stopwords.words("spanish")
+        es_stop_words = stopwords.words("spanish")
         filtered_list = []
 
         lists = [wc_text]
@@ -156,7 +156,7 @@ def wc_create_es(request):
 
         for sentence in words_list:
             for word, tag in sentence:
-                if word.casefold() not in spa_stop_words and ("(" not in word) and (")" not in word) and (
+                if (word.casefold() not in es_stop_words) and ("(" not in word) and (")" not in word) and (
                         "!" not in word) and (
                         "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
                         "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
