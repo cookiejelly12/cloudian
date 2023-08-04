@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from konlpy.tag import Okt
 from collections import Counter
-import nltk
+from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import stylecloud
 import random
@@ -108,20 +108,18 @@ def wc_create_en(request):
 
         lists = [wc_text]
         words_list = []
-        okt = Okt()
 
         for sentence in lists:
-            words_list.append(okt.pos(sentence))
+            words_list.append(word_tokenize(sentence))
 
-        for sentence in words_list:
-            for word, tag in sentence:
-                if (word.casefold() not in eng_stop_words) and ("(" not in word) and (")" not in word) and (
-                        "!" not in word) and (
-                        "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
-                        "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
-                        ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
-                        "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
-                    filtered_list.append(word)
+        for word in words_list:
+            if (word.casefold() not in eng_stop_words) and ("(" not in word) and (")" not in word) and (
+                    "!" not in word) and (
+                    "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
+                    "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
+                    ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
+                    "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
+                filtered_list.append(word)
 
         if len(filtered_list) != 0:
             count = Counter(filtered_list)
@@ -149,28 +147,18 @@ def wc_create_es(request):
 
         lists = [wc_text]
         words_list = []
-        okt = Okt()
 
         for sentence in lists:
-            words_list.append(okt.pos(sentence))
+            words_list.append(word_tokenize(sentence))
 
-        for sentence in words_list:
-            for word, tag in sentence:
-                if (word not in es_stop_words) and (word.casefold() not in es_stop_words) and ("(" not in word) and (")" not in word) and (
-                        "!" not in word) and (
-                        "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
-                        "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
-                        ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
-                        "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word): #and (
-                        #"de" not in word) and ("la" not in word) and ("que" not in word) and ("el" not in word) and (
-                        #"en" not in word) and ("y" not in word) and ("a" not in word) and ("los" not in word) and (
-                        #"del" not in word) and ("se" not in word) and ("las" not in word) and ("por" not in word) and (
-                        #"un" not in word) and ("para" not in word) and ("con" not in word) and ("no" not in word) and (
-                        #"una" not in word) and ("su" not in word) and ("al" not in word) and ("lo" not in word) and (
-                        #"lo" not in word) and ("como" not in word) and ("más" not in word) and ("pero" not in word) and (
-                        #"sus" not in word) and ("le" not in word) and ("ya" not in word) and ("o" not in word) and (
-                        #"e" not in word) and ("les" not in word) and ("ni" not in word) and ("uno" not in word)
-                    filtered_list.append(word)
+        for word in words_list:
+            if (word.casefold() not in es_stop_words) and ("(" not in word) and (")" not in word) and (
+                    "!" not in word) and (
+                    "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
+                    "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
+                    ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
+                    "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
+                filtered_list.append(word)
 
         if len(filtered_list) != 0:
             count = Counter(filtered_list)
