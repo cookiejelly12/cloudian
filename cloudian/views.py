@@ -131,7 +131,7 @@ def wc_create_en(request):
             stylecloud.gen_stylecloud(text=texts,
                                       icon_name=wc_shape,
                                       background_color="white",
-                                      font_path="/home/cloba/cloudian/static/IBMPlaxSans-Regular.ttf",
+                                      font_path="/home/cloba/cloudian/static/IBMPlexSans-Regular.ttf",
                                       output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
 
     return redirect('cloudian:wc_output', img_id=rannum)
@@ -172,7 +172,7 @@ def wc_create_sp(request):
             stylecloud.gen_stylecloud(text=texts,
                                       icon_name=wc_shape,
                                       background_color="white",
-                                      font_path="/home/cloba/cloudian/static/IBMPlaxSans-Regular.ttf",
+                                      font_path="/home/cloba/cloudian/static/IBMPlexSans-Regular.ttf",
                                       output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
 
     return redirect('cloudian:wc_output', img_id=rannum)
