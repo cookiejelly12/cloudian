@@ -14,7 +14,7 @@ urlpatterns = [
     path('kr/', views.main_kr, name='main_kr'),
     path('kr/wc_create/', views.wc_create_kr, name='wc_create_kr'),
     path('kr/<int:img_id>/', views.output_kr, name='wc_output_kr'),
-    path('sp/', views.main_sp, name='main_sp'),
-    path('sp/wc_create/', views.wc_create_sp, name='wc_create_sp'),
-    path('sp/<int:img_id>/', views.output_sp, name='wc_output_sp'),
+    path('es/', views.main_es, name='main_es'),
+    path('es/wc_create/', views.wc_create_es, name='wc_create_es'),
+    path('es/<int:img_id>/', views.output_es, name='wc_output_es'),
 ]

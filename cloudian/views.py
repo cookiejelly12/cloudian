@@ -28,8 +28,8 @@ def main_en(request):
     return render(request, 'cloudian/base.html')
 
 
-def main_sp(request):
-    return render(request, 'cloudian/base_sp.html')
+def main_es(request):
+    return render(request, 'cloudian/base_es.html')
 
 
 def output_kr(request, img_id):
@@ -42,9 +42,9 @@ def output_en(request, img_id):
     return render(request, 'cloudian/wordcloud.html', context)
 
 
-def output_sp(request, img_id):
+def output_es(request, img_id):
     context = {'img_id': img_id}
-    return render(request, 'cloudian/wordcloud_sp.html', context)
+    return render(request, 'cloudian/wordcloud_es.html', context)
 
 
 def wc_create_kr(request):
@@ -137,7 +137,7 @@ def wc_create_en(request):
     return redirect('cloudian:wc_output', img_id=rannum)
 
 
-def wc_create_sp(request):
+def wc_create_es(request):
     wc_text = request.POST.get('content')
     wc_shape = request.POST.get('shapes')
     rannum = random.randint(1, 10000000)
