@@ -103,8 +103,7 @@ def wc_create_en(request):
     name = "cloudian_" + str(rannum) + "_sp.png"
 
     if wc_text is not None:
-        nltk.download("stopwords")
-        stop_words = set(stopwords.words("english"))
+        eng_stop_words = stopwords.words("english")
         filtered_list = []
 
         lists = [wc_text]
@@ -116,7 +115,7 @@ def wc_create_en(request):
 
         for sentence in words_list:
             for word, tag in sentence:
-                if word.casefold() not in stop_words and ("(" not in word) and (")" not in word) and (
+                if word.casefold() not in eng_stop_words and ("(" not in word) and (")" not in word) and (
                         "!" not in word) and (
                         "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
                         "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
@@ -145,8 +144,7 @@ def wc_create_sp(request):
     name = "cloudian_" + str(rannum) + "_sp.png"
 
     if wc_text is not None:
-        nltk.download("stopwords")
-        stop_words = set(stopwords.words("spanish"))
+        spa_stop_words = stopwords.words("spanish")
         filtered_list = []
 
         lists = [wc_text]
@@ -158,7 +156,7 @@ def wc_create_sp(request):
 
         for sentence in words_list:
             for word, tag in sentence:
-                if word.casefold() not in stop_words and ("(" not in word) and (")" not in word) and (
+                if word.casefold() not in spa_stop_words and ("(" not in word) and (")" not in word) and (
                         "!" not in word) and (
                         "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
                         "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
