@@ -100,7 +100,7 @@ def wc_create_en(request):
     wc_text = request.POST.get('content')
     wc_shape = request.POST.get('shapes')
     rannum = random.randint(1, 10000000)
-    name = "cloudian_" + str(rannum) + "_sp.png"
+    name = "cloudian_" + str(rannum) + ".png"
 
     if wc_text is not None:
         eng_stop_words = stopwords.words("english")
