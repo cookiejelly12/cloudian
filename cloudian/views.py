@@ -111,7 +111,7 @@ def wc_create_en(request):
                             "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
                             "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
                             ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
-                            "[" not in word) and ("]" not in word):
+                            "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
                     filtered_list.append(word)
 
         if len(filtered_list) != 0:
