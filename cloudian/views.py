@@ -131,7 +131,7 @@ def wc_create_en(request):
             stylecloud.gen_stylecloud(text=texts,
                                       icon_name=wc_shape,
                                       background_color="white",
-                                      font_path="/home/cloba/cloudian/static/IBMPlexSans-Regular.ttf",
+                                      font_path="/home/cloba/cloudian/static/IBMPlexSans-SemiBold.ttf",
                                       output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
 
     return redirect('cloudian:wc_output', img_id=rannum)
@@ -156,12 +156,20 @@ def wc_create_es(request):
 
         for sentence in words_list:
             for word, tag in sentence:
-                if (word.casefold() not in es_stop_words) and ("(" not in word) and (")" not in word) and (
+                if (word not in es_stop_words) and (word.casefold() not in es_stop_words) and ("(" not in word) and (")" not in word) and (
                         "!" not in word) and (
                         "?" not in word) and ("." not in word) and ("," not in word) and ("\'" not in word) and (
                         "\"" not in word) and ("\\" not in word) and ("\n" not in word) and ("\r" not in word) and (
                         ":" not in word) and (";" not in word) and ("{" not in word) and ("}" not in word) and (
-                        "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word):
+                        "[" not in word) and ("]" not in word) and ("-" not in word) and ("=" not in word) and (
+                        "de" not in word) and ("la" not in word) and ("que" not in word) and ("el" not in word) and (
+                        "en" not in word) and ("y" not in word) and ("a" not in word) and ("los" not in word) and (
+                        "del" not in word) and ("se" not in word) and ("las" not in word) and ("por" not in word) and (
+                        "un" not in word) and ("para" not in word) and ("con" not in word) and ("no" not in word) and (
+                        "una" not in word) and ("su" not in word) and ("al" not in word) and ("lo" not in word) and (
+                        "lo" not in word) and ("como" not in word) and ("más" not in word) and ("pero" not in word) and (
+                        "sus" not in word) and ("le" not in word) and ("ya" not in word) and ("o" not in word) and (
+                        "e" not in word) and ("les" not in word) and ("ni" not in word) and ("uno" not in word):
                     filtered_list.append(word)
 
         if len(filtered_list) != 0:
@@ -172,7 +180,7 @@ def wc_create_es(request):
             stylecloud.gen_stylecloud(text=texts,
                                       icon_name=wc_shape,
                                       background_color="white",
-                                      font_path="/home/cloba/cloudian/static/IBMPlexSans-Regular.ttf",
+                                      font_path="/home/cloba/cloudian/static/IBMPlexSans-SemiBold.ttf",
                                       output_name="/home/cloba/cloudian/static/cloudImage/" + name, )
 
     return redirect('cloudian:wc_output_es', img_id=rannum)
